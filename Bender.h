@@ -21,8 +21,8 @@ class Bender {
 		Bender();
 		// @param nombre, HP, defensa, ofensa, fuerza, suerte
 		Bender(string, int, int, int, int, int);
-		virtual void AtaqueRegular() = 0;
-		virtual void AtaqueEspecial() = 0;
+		virtual void AtaqueRegular(Bender*) = 0;
+		virtual void AtaqueEspecial(Bender*) = 0;
 
 		string getNombre();
 		int getHP();

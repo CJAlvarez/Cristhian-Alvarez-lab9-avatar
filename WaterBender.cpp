@@ -9,9 +9,13 @@ WaterBender::WaterBender(string nombre, int HP, int defensa, int ofensa, int fue
 }
 
 
-void WaterBender::AtaqueRegular() {
+void WaterBender::AtaqueRegular(Bender* bender) {
 
 }
-void WaterBender::AtaqueEspecial() {
+void WaterBender::AtaqueEspecial(Bender* bender) {
+
+}
+
+void WaterBender::Recuperar( Bender* bender) {
 
 }

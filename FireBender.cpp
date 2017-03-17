@@ -9,9 +9,9 @@ FireBender::FireBender(string nombre, int HP, int defensa, int ofensa, int fuerz
 
 }
 
-void FireBender::AtaqueRegular() {
+void FireBender::AtaqueRegular(Bender* bender) {
 
 }
-void FireBender::AtaqueEspecial() {
+void FireBender::AtaqueEspecial(Bender* bender) {
 
 }

@@ -9,9 +9,13 @@ EarthBender::EarthBender(string nombre, int HP, int defensa, int ofensa, int fue
 
 }
 
-void EarthBender::AtaqueRegular() {
+void EarthBender::AtaqueRegular(Bender* bender) {
 
 }
-void EarthBender::AtaqueEspecial() {
+void EarthBender::AtaqueEspecial(Bender* bender) {
+
+}
+
+void EarthBender::Espiar(Bender* bender) {
 
 }

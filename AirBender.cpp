@@ -9,9 +9,9 @@ AirBender::AirBender(string nombre, int HP, int defensa, int ofensa, int fuerza,
 
 }
 
-void AirBender::AtaqueRegular() {
+void AirBender::AtaqueRegular(Bender* bender) {
 
 }
-void AirBender::AtaqueEspecial() {
-
+void AirBender::AtaqueEspecial(Bender* bender) {
+	
 }
