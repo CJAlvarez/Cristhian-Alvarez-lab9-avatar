@@ -1,4 +1,5 @@
 // Bender.h
+#pragma once
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -14,7 +15,7 @@ class Bender {
 		int HP;
 		int defensa;
 		int ofensa;
-		int fuerza;
+		int fuerza; // INUTIL
 		int suerte;
 
 	public:
@@ -31,10 +32,10 @@ class Bender {
 		int getFuerza();
 		int getSuerte();	
 
-		void getNombre(string);
-		void getHP(int);
-		void getDefensa(int);
-		void getOfensa(int);
-		void getFuerza(int);
-		void getSuerte(int);
+		void setNombre(string);
+		void setHP(int);
+		void setDefensa(int);
+		void setOfensa(int);
+		void setFuerza(int);
+		void setSuerte(int);
 };

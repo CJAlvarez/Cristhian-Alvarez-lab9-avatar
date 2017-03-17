@@ -1,5 +1,9 @@
 // FireBender.h
+#pragma once
 #include "Bender.h"
+#include "AirBender.h"
+#include "EarthBender.h"
+#include "WaterBender.h"
 
 class FireBender : public Bender{
 	protected:
