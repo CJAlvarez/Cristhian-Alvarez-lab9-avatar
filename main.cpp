@@ -40,8 +40,10 @@ int main() {
 			cin >> HP;
 			cout << "Defensa: ";
 			cin >> defensa;
-			cout << "Ofensa: ";
-			cin >> ofensa;
+			do{
+				cout << "Ofensa: ";
+				cin >> ofensa;
+			} while(ofensa < 0 || ofensa >60);
 			do{
 				cout << "Suerte: ";
 				cin >> suerte;
@@ -70,11 +72,24 @@ int main() {
  		} 
  		// BATALLA
  		else if(menu == 2) {
+ 			int oponentes[2];
 	 		for(int i = 0; i < benders -> size(); i++) {
 		 		cout << i << ".- " << benders -> at(i) -> getNombre() << "[" << typeid(*(benders -> at(i))).name() << "]" << endl;
-		 	}	 			
+		 	}
+		 	do {
+		 		cout << "Primer Oponente: ";
+		 		cin >> oponentes[0];
+		 	} while(oponentes[0] < 0 || oponentes[0] >= benders -> size());
+		 	do {
+		 		cout << "Segundo Oponente: ";
+		 		cin >> oponentes[1];
+		 		if(oponentes[0] == oponentes[1]) {
+		 			cout << "YA FUE ELEGIDO" << endl;
+		 			oponentes[1] = -1;
+		 		}
+		 	} while(oponentes[1] < 0 || oponentes[1] >= benders -> size());
+ 			
  		}
-
  		cout << "¿Salir?\n1.- Si\n0.- No";
  		cin >> salir;
  	} while(salir == 0);
