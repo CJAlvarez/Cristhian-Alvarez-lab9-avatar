@@ -7,4 +7,8 @@ class FireBender : public Bender{
 
 	public:
 		FireBender();
+		// @param nombre, HP, defensa, ofensa, fuerza, suerte
+		FireBender(string, int, int, int, int, int);
+		virtual void AtaqueRegular();
+		virtual void AtaqueEspecial();
 };

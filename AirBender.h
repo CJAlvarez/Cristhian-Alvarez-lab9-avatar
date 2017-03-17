@@ -7,4 +7,8 @@ class AirBender : public Bender{
 
 	public:
 		AirBender();
+		// @param nombre, HP, defensa, ofensa, fuerza, suerte
+		AirBender(string, int, int, int, int, int);
+		virtual void AtaqueRegular();
+		virtual void AtaqueEspecial();
 };

@@ -7,4 +7,8 @@ class EarthBender : public Bender{
 
 	public:
 		EarthBender();
+		// @param nombre, HP, defensa, ofensa, fuerza, suerte
+		EarthBender(string, int, int, int, int, int);
+		virtual void AtaqueRegular();
+		virtual void AtaqueEspecial();
 };
