@@ -6,5 +6,5 @@ class EarthBender : public Bender{
 
 
 	public:
-
+		EarthBender();
 };

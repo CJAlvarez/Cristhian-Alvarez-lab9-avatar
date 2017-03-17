@@ -6,5 +6,5 @@ class FireBender : public Bender{
 
 
 	public:
-
+		FireBender();
 };

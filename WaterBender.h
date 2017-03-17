@@ -6,5 +6,5 @@ class WaterBender : public Bender{
 
 
 	public:
-
+		WaterBender();
 };
