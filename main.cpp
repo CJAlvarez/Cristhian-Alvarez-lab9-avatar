@@ -124,12 +124,11 @@ int main() {
 					// huir
 					case 3: {
 						// SET WINNER
-						benders -> at(oponentes[turn % 2]) -> setHP(0);
 						cout << "Gana Oponente " << (turn+1)%2 << "\n Su ofensa subio +10" <<  endl;
 						benders -> at(oponentes[(turn+1) % 2]) -> setOfensa(benders -> at(oponentes[(turn+1) % 2]) -> getOfensa() + bono);
 						WINNER = oponentes[(turn+1) % 2];
-						delete benders -> at(oponentes[turn % 2]);
-						benders -> erase(benders -> begin() + oponentes[turn % 2]);
+						
+						benders -> at(oponentes[turn % 2]) -> setHP(0);						
 						break;
 					}
 					case 4: {
@@ -150,23 +149,20 @@ int main() {
 						break;
 					}
 				}
-				if(benders -> at(oponentes[turn % 2]) -> getHP() <= 0) {
-					WINNER = oponentes[(turn+1) % 2];
-					cout << "Gana Oponente " << (turn+1)%2 << "\n Su ofensa subio +10" <<  endl;
-					benders -> at(oponentes[(turn+1) % 2]) -> setOfensa(benders -> at(oponentes[(turn+1) % 2]) -> getOfensa() + bono);
-					delete benders -> at(oponentes[turn % 2]);
-					benders -> erase(benders -> begin() + oponentes[turn % 2]);
-				} else if(benders -> at(oponentes[(turn+1) % 2]) -> getHP() <= 0) {
-					WINNER = oponentes[turn % 2];
-					cout << "Gana Oponente " << turn%2 << "\n Su ofensa subio +10" <<  endl;
-					benders -> at(oponentes[turn % 2]) -> setOfensa(benders -> at(oponentes[turn % 2]) -> getOfensa() + bono);
-					delete benders -> at(oponentes[(turn+1) % 2]);
-					benders -> erase(benders -> begin() + oponentes[(turn+1) % 2]);
-				}
 
 				if(WINNER != -1){ 
 					break;
 				}
+				if(benders -> at(oponentes[turn % 2]) -> getHP() <= 0) {
+					WINNER = oponentes[(turn+1) % 2];
+					cout << "Gana Oponente " << (turn+1)%2 << "\n Su ofensa subio +10" <<  endl;
+					benders -> at(oponentes[(turn+1) % 2]) -> setOfensa(benders -> at(oponentes[(turn+1) % 2]) -> getOfensa() + bono);										
+				} else if(benders -> at(oponentes[(turn+1) % 2]) -> getHP() <= 0) {
+					WINNER = oponentes[turn % 2];
+					cout << "Gana Oponente " << turn%2 << "\n Su ofensa subio +10" <<  endl;
+					benders -> at(oponentes[turn % 2]) -> setOfensa(benders -> at(oponentes[turn % 2]) -> getOfensa() + bono);					
+				}
+				turn++;
  			} while((benders -> at(oponentes[0]) -> getHP() > 0) && (benders -> at(oponentes[1]) -> getHP() > 0)); 			
  		}
  		cout << "¿Salir?\n1.- Si\n0.- No\n_ ";
