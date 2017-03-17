@@ -16,5 +16,5 @@ class WaterBender : public Bender{
 		virtual void AtaqueRegular(Bender*);
 		virtual void AtaqueEspecial(Bender*);
 
-		void Recuperar(Bender*);
+		void Recuperar();
 };

@@ -8,7 +8,6 @@ WaterBender::WaterBender(string nombre, int HP, int defensa, int ofensa, int fue
 
 }
 
-
 void WaterBender::AtaqueRegular(Bender* bender) {
 	bender -> setHP(bender -> getHP() - ofensa);
 	if(smash() == 1) {
@@ -26,8 +25,10 @@ void WaterBender::AtaqueEspecial(Bender* bender) {
 	}
 }
 
-void WaterBender::Recuperar( Bender* bender) {
-	if(bender -> getOfensa() >= 110) {
-		bender -> setHP(bender -> getHP() + 75);
+void WaterBender::Recuperar() {
+	if(ofensa >= 110) {
+		HP += 75;
+	} else {
+		cout << "Movimiento fallido, cuenta como turno" << endl;
 	}
 }

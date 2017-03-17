@@ -17,12 +17,13 @@
 using namespace std;
 
 int main() {
+	cout << "\n\t\t\t¡BIENVENIDO!"<< endl;
 	srand(time(NULL));
 	vector <Bender*>* benders = new vector <Bender*>();
 	int salir;
  	do {
  		int menu;
- 		cout << "1.- Agregar\n2.- Batalla";
+ 		cout << "1.- Agregar\n2.- Batalla\n_ ";
  		cin >> menu;
 
  		// AGREGAR
@@ -43,13 +44,13 @@ int main() {
 			do{
 				cout << "Ofensa: ";
 				cin >> ofensa;
-			} while(ofensa < 0 || ofensa >60);
+			} while(ofensa <= 0 || ofensa > 60);
 			do{
 				cout << "Suerte: ";
 				cin >> suerte;
-			} while(suerte < 0 || suerte > 10);
+			} while(suerte <= 0 || suerte > 10);
 
- 			cout << "1.- Aire\n2.- Tierra\n3.- Agua\n4.- Fuego";
+ 			cout << "1.- Aire\n2.- Tierra\n3.- Agua\n4.- Fuego\n_ ";
  			cin >> tipo;
  			switch(tipo) {
  				case 1: {
@@ -88,9 +89,62 @@ int main() {
 		 			oponentes[1] = -1;
 		 		}
 		 	} while(oponentes[1] < 0 || oponentes[1] >= benders -> size());
- 			
+		 	
+		 	int turn = 0;
+		 	int accion;
+ 			do{
+		 		int opciones = 2;
+ 				cout << "Turno del Oponente " << ((turn % 2) +1) << endl;
+ 				cout << "1.- Ataque Normal\n2.- Ataque especial\n3.- Huir" << endl;
+ 				// Agua
+ 				if(typeid(*(benders -> at(oponentes[turn % 2]))) == typeid(WaterBender)) {
+ 					opciones++;
+ 					cout << "4.- Recuperar" << endl;
+ 				}
+ 				// Tierra
+ 				else if(typeid(*(benders -> at(oponentes[turn % 2]))) == typeid(EarthBender)) {
+ 					opciones++;
+ 					cout << "4.- Espiar" << endl;
+ 				}
+ 				cout << "_ ";
+				cin >> accion; 				
+				switch(accion) {
+					// normal
+					case 1: {
+						benders -> at(oponentes[turn % 2]) -> AtaqueRegular(benders -> at(oponentes[(turn+1) % 2]));
+						break;
+					}
+					// Especial
+					case 2: {
+						benders -> at(oponentes[turn % 2]) -> AtaqueEspecial(benders -> at(oponentes[(turn+1) % 2]));
+						break;
+					}
+					case 3: {
+						// SET WINNER
+						benders -> at(oponentes[turn % 2]) -> setHP(0);
+						break;
+					}
+					case 4: {
+						// AGUA
+						if(typeid(*(benders -> at(oponentes[turn % 2]))) == typeid(WaterBender)) {
+							static_cast<WaterBender*>(benders -> at(oponentes[turn % 2])) -> Recuperar();							
+		 				}
+		 				// Tierra
+		 				else if(typeid(*(benders -> at(oponentes[turn % 2]))) == typeid(EarthBender)) {
+		 					static_cast<EarthBender*>(benders -> at(oponentes[turn % 2])) -> Espiar(benders -> at(oponentes[(turn+1) % 2]));		 					
+		 				} else {
+		 					cout << "INVALIDO" << endl;
+		 				}
+						break;
+					}
+					default: {
+						cout << "INVALIDO" << endl;
+						break;
+					}
+				} 				
+ 			} while((benders -> at(oponentes[0]) -> getHP() <= 0) || (benders -> at(oponentes[1]) -> getHP() <= 0));
  		}
- 		cout << "¿Salir?\n1.- Si\n0.- No";
+ 		cout << "¿Salir?\n1.- Si\n0.- No\n_ ";
  		cin >> salir;
  	} while(salir == 0);
  	for(int i = 0; i < benders -> size(); i++) {
@@ -98,5 +152,6 @@ int main() {
  	}
  	delete benders;
  	benders -> clear();
+ 	cout << "¡HASTA PRONTO!" << endl;
 	return 0;
 }
