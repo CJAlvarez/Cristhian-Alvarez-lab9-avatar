@@ -73,6 +73,8 @@ int main() {
  		} 
  		// BATALLA
  		else if(menu == 2) {
+ 			int bono = 10;
+ 			int WINNER = -1;
  			int oponentes[2];
 	 		for(int i = 0; i < benders -> size(); i++) {
 		 		cout << i << ".- " << benders -> at(i) -> getNombre() << "[" << typeid(*(benders -> at(i))).name() << "]" << endl;
@@ -119,9 +121,15 @@ int main() {
 						benders -> at(oponentes[turn % 2]) -> AtaqueEspecial(benders -> at(oponentes[(turn+1) % 2]));
 						break;
 					}
+					// huir
 					case 3: {
 						// SET WINNER
 						benders -> at(oponentes[turn % 2]) -> setHP(0);
+						cout << "Gana Oponente " << (turn+1)%2 << "\n Su ofensa subio +10" <<  endl;
+						benders -> at(oponentes[(turn+1) % 2]) -> setOfensa(benders -> at(oponentes[(turn+1) % 2]) -> getOfensa() + bono);
+						WINNER = oponentes[(turn+1) % 2];
+						delete benders -> at(oponentes[turn % 2]);
+						benders -> erase(benders -> begin() + oponentes[turn % 2]);
 						break;
 					}
 					case 4: {
@@ -141,8 +149,25 @@ int main() {
 						cout << "INVALIDO" << endl;
 						break;
 					}
-				} 				
- 			} while((benders -> at(oponentes[0]) -> getHP() <= 0) || (benders -> at(oponentes[1]) -> getHP() <= 0));
+				}
+				if(benders -> at(oponentes[turn % 2]) -> getHP() <= 0) {
+					WINNER = oponentes[(turn+1) % 2];
+					cout << "Gana Oponente " << (turn+1)%2 << "\n Su ofensa subio +10" <<  endl;
+					benders -> at(oponentes[(turn+1) % 2]) -> setOfensa(benders -> at(oponentes[(turn+1) % 2]) -> getOfensa() + bono);
+					delete benders -> at(oponentes[turn % 2]);
+					benders -> erase(benders -> begin() + oponentes[turn % 2]);
+				} else if(benders -> at(oponentes[(turn+1) % 2]) -> getHP() <= 0) {
+					WINNER = oponentes[turn % 2];
+					cout << "Gana Oponente " << turn%2 << "\n Su ofensa subio +10" <<  endl;
+					benders -> at(oponentes[turn % 2]) -> setOfensa(benders -> at(oponentes[turn % 2]) -> getOfensa() + bono);
+					delete benders -> at(oponentes[(turn+1) % 2]);
+					benders -> erase(benders -> begin() + oponentes[(turn+1) % 2]);
+				}
+
+				if(WINNER != -1){ 
+					break;
+				}
+ 			} while((benders -> at(oponentes[0]) -> getHP() > 0) && (benders -> at(oponentes[1]) -> getHP() > 0)); 			
  		}
  		cout << "¿Salir?\n1.- Si\n0.- No\n_ ";
  		cin >> salir;

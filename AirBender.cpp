@@ -10,9 +10,9 @@ AirBender::AirBender(string nombre, int HP, int defensa, int ofensa, int fuerza,
 }
 
 void AirBender::AtaqueRegular(Bender* bender) {
-	bender -> setHP(bender -> getHP() - ofensa);
+	bender -> setHP(bender -> getHP() - ofensa + (bender -> getDefensa() * 0.40));
 	if(smash() == 1) {
-		bender -> setHP(bender -> getHP() - ((ofensa * 0.50) + ofensa));
+			bender -> setHP(bender -> getHP() - ((ofensa * 0.50) + ofensa));
 	}
 }
 
@@ -20,9 +20,9 @@ void AirBender::AtaqueEspecial(Bender* bender) {
 	if(typeid(*bender) == typeid(EarthBender)) {
 		bender -> setHP(bender -> getHP() - ((ofensa * 0.25) + ofensa));
 	} else {
-		bender -> setHP(bender -> getHP() - ofensa);
+		bender -> setHP(bender -> getHP() - ofensa + (bender -> getDefensa() * 0.40));
 	}
 	if(smash() == 1) {
-		bender -> setHP(bender -> getHP() - ((ofensa * 0.50) + ofensa));
+			bender -> setHP(bender -> getHP() - ((ofensa * 0.50) + ofensa));
 	}
 }

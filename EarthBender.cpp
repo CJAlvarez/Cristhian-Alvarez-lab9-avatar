@@ -10,7 +10,7 @@ EarthBender::EarthBender(string nombre, int HP, int defensa, int ofensa, int fue
 }
 
 void EarthBender::AtaqueRegular(Bender* bender) {
-	bender -> setHP(bender -> getHP() - ofensa);
+	bender -> setHP(bender -> getHP() - ofensa + (bender -> getDefensa() * 0.40));
 	if(smash() == 1) {
 			bender -> setHP(bender -> getHP() - ((ofensa * 0.50) + ofensa));
 	}
@@ -19,7 +19,7 @@ void EarthBender::AtaqueEspecial(Bender* bender) {
 	if(typeid(*bender) == typeid(WaterBender)) {
 		bender -> setHP(bender -> getHP() - ((ofensa * 0.25) + ofensa));
 	} else {
-		bender -> setHP(bender -> getHP() - ofensa);
+		bender -> setHP(bender -> getHP() - ofensa + (bender -> getDefensa() * 0.40));
 	}
 	if(smash() == 1) {
 			bender -> setHP(bender -> getHP() - ((ofensa * 0.50) + ofensa));
