@@ -1,6 +1,6 @@
 # makefile
 main.exe: main.o Bender.o AirBender.o EarthBender.o WaterBender.o FireBender.o
-	g++ main.o Bender.o -o run -std=c++0x
+	g++ main.o Bender.o AirBender.o EarthBender.o WaterBender.o FireBender.o -o run -std=c++0x
 
 main.o: main.cpp Bender.h AirBender.h EarthBender.h WaterBender.h FireBender.h
 	g++ main.cpp -c -std=c++0x

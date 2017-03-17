@@ -5,6 +5,8 @@
 #include <sstream>
 #include <vector>
 #include <time.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <typeinfo>
 
 using namespace std;
@@ -15,7 +17,7 @@ class Bender {
 		int HP;
 		int defensa;
 		int ofensa;
-		int fuerza; // INUTIL
+		int fuerza = 0; // INUTIL
 		int suerte;
 
 	public:
@@ -38,4 +40,6 @@ class Bender {
 		void setOfensa(int);
 		void setFuerza(int);
 		void setSuerte(int);
+
+		int smash();
 };

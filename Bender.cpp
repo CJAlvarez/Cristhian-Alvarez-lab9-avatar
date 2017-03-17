@@ -56,3 +56,27 @@ void Bender::setFuerza(int fuerza){
 void Bender::setSuerte(int suerte){
 	this -> suerte = suerte;
 }
+
+int Bender::smash() {
+	srand(time(NULL));
+	int random;
+	if(suerte > 0 && suerte <= 5) {
+		random = rand() % 1000 + 1;
+		if(random == 50) {
+			return 1;
+		}
+	} 
+	else if(suerte >= 6 && suerte <= 9) {
+		random = rand() % 100 + 1;
+		if(random % 5 == 0) {
+			return 1;
+		}
+	}
+	else {
+		random = rand() % 10 + 1;
+		if(random % 3 == 0) {
+			return 1;
+		}
+	}
+	return 0;
+}
