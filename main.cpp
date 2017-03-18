@@ -22,7 +22,10 @@ int main() {
 	srand(time(NULL));
 	vector <Bender*>* benders = new vector <Bender*>();
 	benders -> push_back(new Avatar("Aang", 60, 100, 60, 0, 10));
-	benders -> push_back(new FireBender("Pato", 30, 10, 30, 0, 50));
+	benders -> push_back(new FireBender("Pato1", 30, 10, 30, 0, 50));
+	benders -> push_back(new AirBender("Pato2", 30, 10, 30, 0, 50));
+	benders -> push_back(new EarthBender("Pato3", 30, 10, 30, 0, 50));
+	benders -> push_back(new WaterBender("Pato4", 30, 10, 30, 0, 50));
 	int salir;
  	do {
  		cout << endl;
