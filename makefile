@@ -1,8 +1,8 @@
 # makefile
-main.exe: main.o Bender.o AirBender.o EarthBender.o WaterBender.o FireBender.o
-	g++ main.o Bender.o AirBender.o EarthBender.o WaterBender.o FireBender.o -o run -std=c++0x
+main.exe: main.o Bender.o AirBender.o EarthBender.o WaterBender.o FireBender.o Avatar.o
+	g++ main.o Bender.o AirBender.o EarthBender.o WaterBender.o FireBender.o Avatar.o -o run -std=c++0x
 
-main.o: main.cpp Bender.h AirBender.h EarthBender.h WaterBender.h FireBender.h
+main.o: main.cpp Bender.h AirBender.h EarthBender.h WaterBender.h FireBender.h Avatar.h
 	g++ main.cpp -c -std=c++0x
 
 Bender.o: Bender.h Bender.cpp
@@ -19,3 +19,6 @@ WaterBender.o: WaterBender.h WaterBender.cpp Bender.h AirBender.h EarthBender.h 
 
 FireBender.o: FireBender.h FireBender.cpp Bender.h AirBender.h EarthBender.h WaterBender.h 
 	g++ FireBender.cpp -c -std=c++0x
+
+Avatar.o: Avatar.h Avatar.h Bender.h AirBender.h EarthBender.h WaterBender.h FireBender.h
+	g++ Avatar.cpp -c -std=c++0x
